@@ -85,8 +85,8 @@ public  class MyAgentw extends Agent{
 	public int act(int plocha[][], int[] tahy, int timeLimit){
 		int result = 0;
 		
-		int maxScore = -Constants.INFTY;
-		int maxTah = 0;
+		int minScore = Constants.INFTY;
+		int minTah = 0;
 		
 		// pokusime sa zahrat jednotlive tahy a vratime ten tah, pre ktory nam heuristika vrati najlepsie skore
 		for (int i = 0;i < tahy.length; i++){
@@ -99,15 +99,15 @@ public  class MyAgentw extends Agent{
 							4, 
 							-Constants.INFTY, 
 							Constants.INFTY, 
-							myColor
+							getOppositePlayerColor(myColor)
 						);
-			if (score > maxScore){
-				maxScore = score;
-				maxTah = i;
+			if (score > minScore){
+				minScore = score;
+				minTah = i;
 			}
 		}
 		
-		return maxTah;
+		return minTah;
 		
 		/* ZACIATOK MIESTA PRE VAS KOD */
 		
