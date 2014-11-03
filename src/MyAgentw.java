@@ -12,14 +12,14 @@ public  class MyAgentw extends Agent{
 	
 	
 	// skore daneho stavu je rovne rozdielu poctu mojich policok a policok supera
-	public int heuristics(int[][] plocha, int playerColor){
+	public int heuristics(int[][] plocha){
 		int ret = 0;
 		for (int r = 0; r < plocha.length; r++){
 			for (int c = 0; c < plocha[r].length; c++){
-				if (plocha[r][c] == playerColor){
+				if (plocha[r][c] == myColor){
 					ret++;
 				}
-				else if (plocha[r][c] == getOppositePlayerColor(playerColor)){
+				else if (plocha[r][c] == getOppositePlayerColor(myColor)){
 					ret--;
 				}
 			}
@@ -40,47 +40,36 @@ public  class MyAgentw extends Agent{
 		int[] possibleMoves;
 		possibleMoves = world.getPossibleMoves(plocha, playerColor);
 		if (depth == 0 || possibleMoves.length == 0){
-			return heuristics(plocha, playerColor);
+			return heuristics(plocha);
 		}
 		
-		if (playerColor == this.myColor){
-			for (int i = 0;i < possibleMoves.length; i++){
-				alpha = Math.max(
-							alpha, 
-							alphabeta(
-									world.getResultingState(
-											plocha,
-											possibleMoves[i], 
-											playerColor
-									),
-									depth - 1,
-									alpha, 
-									beta,
-									getOppositePlayerColor(playerColor)
-							)
-						);
-				if (beta <= alpha) break;
+		for (int i = 0;i < possibleMoves.length; i++){
+			int alphabeta = alphabeta(
+					world.getResultingState(
+							plocha,
+							possibleMoves[i], 
+							playerColor
+					),
+					depth - 1,
+					alpha, 
+					beta,
+					getOppositePlayerColor(playerColor)
+			);
+			
+			if (playerColor == myColor){
+				alpha = Math.max(alpha, alphabeta);
 			}
+			else{
+				beta = Math.min(beta, alphabeta);
+			}
+			
+			if (beta <= alpha) break;
+		}
+		
+		if (playerColor == myColor) {
 			return alpha;
 		}
 		else{
-			for (int i = 0;i < possibleMoves.length; i++){
-				beta = Math.min(
-							beta, 
-							alphabeta(
-									world.getResultingState(
-											plocha,
-											possibleMoves[i], 
-											playerColor
-									),
-									depth - 1,
-									alpha, 
-									beta,
-									getOppositePlayerColor(playerColor)
-							)
-						);
-				if (beta <= alpha) break;
-			}
 			return beta;
 		}
 	}
