@@ -19,6 +19,9 @@ public  class MyAgentw extends Agent{
 				if (plocha[r][c] == playerColor){
 					ret++;
 				}
+				else if (plocha[r][c] == getOppositePlayerColor(playerColor)){
+					ret--;
+				}
 			}
 		}
 		
@@ -40,7 +43,7 @@ public  class MyAgentw extends Agent{
 			return heuristics(plocha, playerColor);
 		}
 		
-		if (this.myColor == playerColor){
+		if (playerColor == this.myColor){
 			for (int i = 0;i < possibleMoves.length; i++){
 				alpha = Math.max(
 							alpha, 
@@ -85,8 +88,8 @@ public  class MyAgentw extends Agent{
 	public int act(int plocha[][], int[] tahy, int timeLimit){
 		int result = 0;
 		
-		int minScore = Constants.INFTY;
-		int minTah = 0;
+		int maxScore = -Constants.INFTY;
+		int maxTah = 0;
 		
 		// pokusime sa zahrat jednotlive tahy a vratime ten tah, pre ktory nam heuristika vrati najlepsie skore
 		for (int i = 0;i < tahy.length; i++){
@@ -96,18 +99,18 @@ public  class MyAgentw extends Agent{
 									tahy[i], 
 									this.myColor
 							), 
-							4, 
+							5, 
 							-Constants.INFTY, 
 							Constants.INFTY, 
 							getOppositePlayerColor(myColor)
 						);
-			if (score > minScore){
-				minScore = score;
-				minTah = i;
+			if (score > maxScore){
+				maxScore = score;
+				maxTah = i;
 			}
 		}
 		
-		return minTah;
+		return maxTah;
 		
 		/* ZACIATOK MIESTA PRE VAS KOD */
 		
