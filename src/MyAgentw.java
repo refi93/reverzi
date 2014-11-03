@@ -11,7 +11,7 @@ public  class MyAgentw extends Agent{
 	}
 	
 	
-	// skore daneho stavu je rovne poctu policok danej farby
+	// skore daneho stavu je rovne rozdielu poctu mojich policok a policok supera
 	public int heuristics(int[][] plocha, int playerColor){
 		int ret = 0;
 		for (int r = 0; r < plocha.length; r++){
@@ -111,22 +111,5 @@ public  class MyAgentw extends Agent{
 		}
 		
 		return maxTah;
-		
-		/* ZACIATOK MIESTA PRE VAS KOD */
-		
-		
-		// mozne tahy bieleho hraca v stave hry "plocha"
-		// int[] tahyBieleho = world.getPossibleMoves(plocha, World.WHITE_PLAYER);
-
-		// mozne tahy cierneho hraca v stave hry "plocha"
-		// int[] tahyCierneho = world.getPossibleMoves(plocha, World.BLACK_PLAYER);
-		
-		// stav hry po zahrati tahu "tah" hracom "player" v stave "plocha"		
-		// int[][] novaPlocha = world.getResultingState(plocha, tah, player);
-		
-		//result=rnd.nextInt(tahy.length);	 
-		
-		/* KONIEC MIESTA PRE VAS KOD */
-		//return result;
 	}	
 }
