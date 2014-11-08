@@ -18,7 +18,7 @@ public class World {
     public int nowin;
     public int games;
     boolean rungame;
-    final int TIME_LIMIT = 1000;
+    final int TIME_LIMIT = 20;
     boolean timeoutWhite = false;
     boolean timeoutBlack = false;    
     
@@ -196,6 +196,7 @@ public class World {
 				policko = Black.act(net,vmok,TIME_LIMIT);
 				long endTime = System.currentTimeMillis();
 				timeoutBlack = (endTime - time) > TIME_LIMIT;
+				System.out.println(endTime - time);
 				if (timeoutBlack){
 					return;
 				}
