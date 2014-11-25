@@ -127,25 +127,41 @@ public  class MyAgentb extends Agent{
 	}
 	
 	public int act(int plocha[][], int[] tahy, int timeLimit){
-		if (timeLimit <= 40) {
+		if (timeLimit <= 15) {
 			cutoff = 2;
+			depthLimit = 2;
+		}
+		else if (timeLimit <= 30) {
+			cutoff = 3;
 			depthLimit = 3;
 		}
-		else if (timeLimit < 100) {
+		else if (timeLimit <= 60){
+			cutoff = 3;
+			depthLimit = 4;
+		}
+		else if (timeLimit < 120) {
 			cutoff = 5;
-			depthLimit = 3;
+			depthLimit = 4;
 		}
-		else if (timeLimit < 300) {
+		else if (timeLimit < 240) {
+			cutoff = 5;
+			depthLimit = 5;
+		}
+		else if (timeLimit < 480) {
 			cutoff = 8;
-			depthLimit = 4;
+			depthLimit = 5;
 		}
-		else if (timeLimit < 700) {
-			cutoff = 100;
-			depthLimit = 4;
+		else if (timeLimit < 960){
+			cutoff = 12;
+			depthLimit = 5;
 		}
-		else {
+		else if (timeLimit < 1920){
 			cutoff = 100;
 			depthLimit = 5;
+		}
+		else{
+			cutoff = 100;
+			depthLimit = 6;
 		}
 		
 		int maxScore = -Constants.INFTY;

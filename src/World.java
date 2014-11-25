@@ -6,7 +6,7 @@ import java.util.Random;
 public class World {
 
 	public static Random r = new Random(new Date().getTime());
-	private long WAIT = 10;
+	private long WAIT = 16;
 
 	public Present presenter;
 	public boolean running;	
@@ -18,7 +18,7 @@ public class World {
     public int nowin;
     public int games;
     boolean rungame;
-    final int TIME_LIMIT = 20;
+    final int TIME_LIMIT = 241;
     boolean timeoutWhite = false;
     boolean timeoutBlack = false;    
     
