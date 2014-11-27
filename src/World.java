@@ -18,7 +18,7 @@ public class World {
     public int nowin;
     public int games;
     boolean rungame;
-    final int TIME_LIMIT = 241;
+    final int TIME_LIMIT = 10;
     boolean timeoutWhite = false;
     boolean timeoutBlack = false;    
     

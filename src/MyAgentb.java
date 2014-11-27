@@ -132,27 +132,27 @@ public  class MyAgentb extends Agent{
 			depthLimit = 2;
 		}
 		else if (timeLimit <= 30) {
-			cutoff = 3;
-			depthLimit = 3;
+			cutoff = 7;
+			depthLimit = 2;
 		}
 		else if (timeLimit <= 60){
-			cutoff = 3;
-			depthLimit = 4;
+			cutoff = 10;
+			depthLimit = 3;
 		}
 		else if (timeLimit < 120) {
-			cutoff = 5;
-			depthLimit = 4;
+			cutoff = 20;
+			depthLimit = 3;
 		}
 		else if (timeLimit < 240) {
-			cutoff = 5;
-			depthLimit = 5;
+			cutoff = 10;
+			depthLimit = 4;
 		}
 		else if (timeLimit < 480) {
-			cutoff = 8;
-			depthLimit = 5;
+			cutoff = 50;
+			depthLimit = 4;
 		}
 		else if (timeLimit < 960){
-			cutoff = 12;
+			cutoff = 11;
 			depthLimit = 5;
 		}
 		else if (timeLimit < 1920){
@@ -163,7 +163,6 @@ public  class MyAgentb extends Agent{
 			cutoff = 100;
 			depthLimit = 6;
 		}
-		
 		int maxScore = -Constants.INFTY;
 		int maxTah = 0;
 		
